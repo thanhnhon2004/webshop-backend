@@ -30,6 +30,10 @@ app.use(helmet({
 app.use(requestIdMiddleware);
 // CORS: Chỉ cho phép FE từ config
 app.use(cors(config.cors));
+app.use(cors({
+  origin: 'https://webshop-frontend.onrender.com',
+  credentials: true
+}));
 // Đáp ứng preflight cho mọi route (nếu FE dùng fetch với credentials)
 // ĐÃ XÓA do gây lỗi path-to-regexp, CORS đã được xử lý đủ với app.use(cors(...))
 app.use(express.json());
