@@ -28,14 +28,15 @@ app.use(helmet({
 }));
 // Request ID middleware (phải là đầu tiên)
 app.use(requestIdMiddleware);
-// CORS: Chỉ cho phép FE từ config
-app.use(cors(config.cors));
+// CORS: Chỉ cho phép FE từ config (chỉ dùng 1 lần, không lặp lại)
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://webshop-fontend.onrender.com' // sửa đúng domain đang dùng
+    'https://webshop-fontend.onrender.com'
   ],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 // Đáp ứng preflight cho mọi route (nếu FE dùng fetch với credentials)
 // ĐÃ XÓA do gây lỗi path-to-regexp, CORS đã được xử lý đủ với app.use(cors(...))
