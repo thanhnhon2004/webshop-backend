@@ -31,7 +31,10 @@ app.use(requestIdMiddleware);
 // CORS: Chỉ cho phép FE từ config
 app.use(cors(config.cors));
 app.use(cors({
-  origin: 'https://webshop-frontend.onrender.com',
+  origin: [
+    'http://localhost:5173',
+    'https://webshop-fontend.onrender.com' // sửa đúng domain đang dùng
+  ],
   credentials: true
 }));
 // Đáp ứng preflight cho mọi route (nếu FE dùng fetch với credentials)
