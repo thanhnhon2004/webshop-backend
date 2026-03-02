@@ -64,12 +64,12 @@ const getConfig = () => ({
   },
 
   // CORS
-  cors: {
-    origin: process.env.FE_URL || 'http://localhost:5173',
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-  },
+cors: {
+  origin: process.env.FE_URL?.split(',') || ['http://localhost:5173'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+},
 
   // File Upload
   upload: {
